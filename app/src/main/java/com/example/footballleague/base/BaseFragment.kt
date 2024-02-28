@@ -1,3 +1,5 @@
+package com.example.footballleague.base
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import es.dmoral.toasty.Toasty
-
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
