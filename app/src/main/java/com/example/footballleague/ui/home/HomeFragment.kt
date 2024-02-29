@@ -20,6 +20,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
+    private val competitionsAdapter by lazy { CompetitionsAdapter() }
+
     private val competitionsViewModel: CompetitionsViewModel by viewModels()
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding
@@ -32,6 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initUi() {
+        binding.competitionsRecyclerView.adapter = competitionsAdapter
         competitionsViewModel.getCompetitions()
 
 
@@ -55,7 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             is Resource.Loading -> {}
 
             is Resource.Success -> {
-
+                competitionsAdapter.differ.submitList(resource.data.competitions)
                 Log.d("hamzaCompetitions", "handleCompetitionsResponse: ${resource.data}")
             }
 
