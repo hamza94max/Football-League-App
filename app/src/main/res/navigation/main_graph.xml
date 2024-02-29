@@ -10,9 +10,15 @@
         android:name="com.example.footballleague.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home">
+
         <action
             android:id="@+id/action_homeFragment_to_competitionDetailsFragment"
-            app:destination="@id/competitionDetailsFragment" />
+            app:destination="@id/competitionDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
     </fragment>
 
 

@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alexandria_regular"
                 android:text="name"
+                android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp" />
 
