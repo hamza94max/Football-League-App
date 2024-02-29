@@ -17,22 +17,22 @@ data class Competition(
     val numberOfAvailableSeasons: Int? = 0,
     val plan: String? = "",
     val type: String? = ""
-)
+) : java.io.Serializable
 
 data class Area(
     val code: String? = "",
     val flag: String? = "",
     val id: Int? = 0,
     val name: String? = ""
-)
+) : java.io.Serializable
 
 data class CurrentSeason(
-    val currentMatchday: Int? = 0,
+    val currentMatchday: Int = 0,
     val endDate: String? = "",
     val id: Int? = 0,
     val startDate: String? = "",
     val winner: Winner? = Winner()
-)
+) : java.io.Serializable
 
 
 data class Winner(
@@ -47,6 +47,6 @@ data class Winner(
     val tla: String? = "",
     val venue: String? = "",
     val website: String? = ""
-)
+) : java.io.Serializable
 
 class Filters

@@ -4,4 +4,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="competition">Competition</string>
     <string name="home">Home</string>
+    <string name="start_date">Start Date:</string>
+    <string name="matchday">Matchday:</string>
+    <string name="end_date">End Date:</string>
+    <string name="area">Area:</string>
+    <string name="type">Type:</string>
+    <string name="numberofavailableseasons">numberOfAvailableSeasons:</string>
+    <string name="plan">plan:</string>
 </resources>

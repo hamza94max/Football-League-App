@@ -2,6 +2,7 @@ package com.example.footballleague.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +28,14 @@ class CompetitionsAdapter : RecyclerView.Adapter<CompetitionsAdapter.ViewHolder>
                 competitionNameTextView.text = data.name
                 competitionAreaTextView.text = data.area?.name
             }
+        }
 
+        init {
+            itemView.setOnClickListener {
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToCompetitionDetailsFragment(differ.currentList[layoutPosition])
+                it.findNavController().navigate(action)
+            }
         }
 
     }

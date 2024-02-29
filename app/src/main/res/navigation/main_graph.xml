@@ -20,5 +20,13 @@
         android:id="@+id/competitionDetailsFragment"
         android:name="com.example.footballleague.ui.competitionDetails.CompetitionDetailsFragment"
         android:label="@string/competition"
-        tools:layout="@layout/fragment_competition_details" />
+        tools:layout="@layout/fragment_competition_details">
+
+        <argument
+            android:name="Competition"
+            app:argType="com.example.footballleague.domain.models.Competition" />
+
+    </fragment>
+
+
 </navigation>
