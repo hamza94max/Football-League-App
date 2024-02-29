@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.footballleague.base.BaseFragment
 import com.example.footballleague.databinding.FragmentHomeBinding
-import com.example.footballleague.domain.models.CompetitionsResponse
+import com.example.footballleague.domain.models.Competition
 import com.example.footballleague.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun initUi() {
         binding.competitionsRecyclerView.adapter = competitionsAdapter
-        competitionsViewModel.getCompetitions()
+
 
 
         observeResponse()
@@ -44,22 +44,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun observeResponse() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                competitionsViewModel.competitions.collect {
+                competitionsViewModel.competitionsFromApi.collect {
                     handleCompetitionsResponse(it)
                 }
             }
         }
     }
 
-    private fun handleCompetitionsResponse(resource: Resource<CompetitionsResponse>) {
+    private fun handleCompetitionsResponse(resource: Resource<List<Competition>>) {
 
         when (resource) {
 
             is Resource.Loading -> {}
 
             is Resource.Success -> {
-                competitionsAdapter.differ.submitList(resource.data.competitions)
-                Log.d("hamzaCompetitions", "handleCompetitionsResponse: ${resource.data}")
+                competitionsAdapter.differ.submitList(resource.data)
+                Log.d("hamzaCompetitions", "handleCompetitionsResponse: ${resource.data.size}")
             }
 
             is Resource.Error -> {

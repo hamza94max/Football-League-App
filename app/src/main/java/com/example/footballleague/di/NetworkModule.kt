@@ -25,6 +25,13 @@ object NetworkModule {
         return OkHttpClient.Builder()
             .connectTimeout(40, TimeUnit.SECONDS)
             .readTimeout(40, TimeUnit.SECONDS)
+            .addInterceptor { chain ->
+                val originalRequest = chain.request()
+                val modifiedRequest = originalRequest.newBuilder()
+                    .header("X-Auth-Token", BuildConfig.API_KEY)
+                    .build()
+                chain.proceed(modifiedRequest)
+            }
             .build()
     }
 

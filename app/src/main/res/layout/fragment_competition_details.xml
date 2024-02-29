@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/_8sdp"
+    android:padding="@dimen/_7sdp"
     tools:context=".ui.competitionDetails.CompetitionDetailsFragment">
 
     <ImageView
