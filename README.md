@@ -28,6 +28,7 @@ The architecture of this application relies and complies with the following poin
 # Languages and Tools
 * [Kotlin](https://kotlinlang.org/) - official programming language for Android development .
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - dependency injection library .
+* [Retrofit](https://square.github.io/retrofit/) A type-safe HTTP client for Android
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - for asynchronous programming .
 * [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
@@ -37,7 +38,9 @@ The architecture of this application relies and complies with the following poin
 * [View Binding](https://developer.android.com/topic/libraries/view-binding) - more easily write code that interacts with views.
 * [detekt](https://github.com/detekt/detekt) - Static code analysis for Kotlin.
 
-
+## API
+The used api to get Competitions :  http://api.football-data.org/v4/
+with endPoint `competitions/`
 
 
 
