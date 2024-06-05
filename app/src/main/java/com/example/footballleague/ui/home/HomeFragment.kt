@@ -1,6 +1,5 @@
 package com.example.footballleague.ui.home
 
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,8 +14,6 @@ import com.example.footballleague.domain.models.Competition
 import com.example.footballleague.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-
-
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
@@ -30,13 +27,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun prepareView(savedInstanceState: Bundle?) {
 
         initUi()
-
     }
 
     private fun initUi() {
         binding.competitionsRecyclerView.adapter = competitionsAdapter
-
-
 
         observeResponse()
     }
