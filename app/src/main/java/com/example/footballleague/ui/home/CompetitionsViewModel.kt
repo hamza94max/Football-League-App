@@ -10,7 +10,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,19 +22,21 @@ class CompetitionsViewModel @Inject constructor(
         getCompetitions()
     }
 
-    private val _competitions =
-        MutableStateFlow<Resource<List<Competition>>>(Resource.Loading)
+    private val _competitions = MutableStateFlow<Resource<List<Competition>>>(Resource.Loading)
     val competitions: Flow<Resource<List<Competition>>> = _competitions
 
     private fun getCompetitions() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val competitions = getCompetitionsUseCase()
-                _competitions.value = Resource.Success(competitions.first())
+                getCompetitionsUseCase().collect { competitions ->
+                    _competitions.value = Resource.Success(competitions)
+                }
             } catch (e: Exception) {
                 _competitions.value = Resource.Error(e)
             }
         }
     }
 
+
 }
+
