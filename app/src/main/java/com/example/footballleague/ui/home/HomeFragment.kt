@@ -38,7 +38,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun observeResponse() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                competitionsViewModel.competitionsFromApi.collect {
+                competitionsViewModel.competitions.collect {
                     handleCompetitionsResponse(it)
                 }
             }

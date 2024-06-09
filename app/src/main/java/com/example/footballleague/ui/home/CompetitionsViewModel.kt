@@ -20,20 +20,20 @@ class CompetitionsViewModel @Inject constructor(
 ) : ViewModel() {
 
     init {
-        getCompetitionsFrom()
+        getCompetitions()
     }
 
-    private val _competitionsFromApi =
+    private val _competitions =
         MutableStateFlow<Resource<List<Competition>>>(Resource.Loading)
-    val competitionsFromApi: Flow<Resource<List<Competition>>> = _competitionsFromApi
+    val competitions: Flow<Resource<List<Competition>>> = _competitions
 
-    private fun getCompetitionsFrom() {
+    private fun getCompetitions() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val competitions = getCompetitionsUseCase()
-                _competitionsFromApi.value = Resource.Success(competitions.first())
+                _competitions.value = Resource.Success(competitions.first())
             } catch (e: Exception) {
-                _competitionsFromApi.value = Resource.Error(e)
+                _competitions.value = Resource.Error(e)
             }
         }
     }
